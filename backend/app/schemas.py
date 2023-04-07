@@ -5,11 +5,10 @@ from pydantic import BaseModel, EmailStr, constr
 class UserBaseSchema(BaseModel):
     name: str
     email: str
-    photo: str
-    usn: str
-    sem: str
-    branch: str
-    section: str
+    age: int
+    address: str
+    city: str
+    state: str
     role: str | None = None
     created_at: int | None = None
     updated_at: int | None = None
@@ -37,4 +36,3 @@ class UserResponseSchema(UserBaseSchema):
 class UserResponse(BaseModel):
     status: str
     user: UserResponseSchema
-

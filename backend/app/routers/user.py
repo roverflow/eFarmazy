@@ -1,8 +1,8 @@
 from fastapi import APIRouter, Depends
 from bson.objectid import ObjectId
-from server.serializers.userSerializers import userResponseEntity
+from app.serializers.userSerializers import userResponseEntity
 
-from server.database import User
+from app.database import User
 from .. import schemas, oauth2
 
 router = APIRouter()
@@ -12,4 +12,3 @@ router = APIRouter()
 def get_me(user_id: str = Depends(oauth2.require_user)):
     user = userResponseEntity(User.find_one({'_id': ObjectId(str(user_id))}))
     return {"status": "success", "user": user}
-

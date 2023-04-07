@@ -1,13 +1,13 @@
 from datetime import datetime, timedelta
-import calendar
 from bson.objectid import ObjectId
 from fastapi import APIRouter, Response, status, Depends, HTTPException
 
-from server import oauth2
-from server.database import User
-from server.serializers.userSerializers import userEntity, userResponseEntity
+import calendar
+from app import oauth2
+from app.database import User
+from app.serializers.userSerializers import userEntity, userResponseEntity
 from .. import schemas, utils
-from server.oauth2 import AuthJWT
+from app.oauth2 import AuthJWT
 from ..config import settings
 
 
@@ -30,7 +30,7 @@ async def create_user(payload: schemas.CreateUserSchema):
     #  Hash the password
     payload.password = utils.hash_password(payload.password)
     del payload.passwordConfirm
-    payload.role = 'student'
+    payload.role = 'user'
     payload.verified = True
     payload.email = payload.email.lower()
     payload.created_at = calendar.timegm(datetime.utcnow().utctimetuple())
@@ -71,7 +71,7 @@ def login(payload: schemas.LoginUserSchema, response: Response, Authorize: AuthJ
                         ACCESS_TOKEN_EXPIRES_IN * 60, '/', None, False, False, 'lax')
 
     # Send both access
-    return {'status': 'success', 'access_token': access_token, 'refresh_token': refresh_token}
+    return {'status': 'success', 'access_token': access_token}
 
 
 @router.get('/refresh')
@@ -108,5 +108,5 @@ def refresh_token(response: Response, Authorize: AuthJWT = Depends()):
 def logout(response: Response, Authorize: AuthJWT = Depends(), user_id: str = Depends(oauth2.require_user)):
     Authorize.unset_jwt_cookies()
     response.set_cookie('logged_in', '', -1)
-    return {'status': 'success'}
 
+    return {'status': 'success'}
