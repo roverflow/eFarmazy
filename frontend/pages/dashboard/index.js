@@ -11,18 +11,18 @@ const inter = Inter({ subsets: ["latin"] });
 const dashboardRoutes = [
   {
     path: "/dashboard/pickaclass",
-    name: "Class",
-    description: "Pick a space to teach.",
+    name: "Sell",
+    description: "Sell your stash.",
   },
   {
     path: "/dashboard/availability",
-    name: "Availability",
-    description: "Check classroom availability.",
+    name: "View",
+    description: "View your previous reports.",
   },
   {
     path: "/dashboard/report",
-    name: "Report",
-    description: "View the attendance report.",
+    name: "Market",
+    description: "View the Market.",
   },
   {
     path: "/dashboard/profile",
@@ -38,15 +38,10 @@ const Dashboard = () => {
         <main className={styles.main}>
           <Header>
             Get started by choosing&nbsp;
-            <code className={styles.code}>Your Class</code>
+            <code className={styles.code}>Your Option</code>
           </Header>
           <Link href={`/`} className={styles.center}>
-            <Image
-              src={require("/assets/aams.png")}
-              alt="aamsLogo"
-              style={{ width: "100%", height: "100%" }}
-              priority
-            />
+            <Image src={require("/assets/efarm.svg")} alt="aamsLogo" priority />
           </Link>
 
           <div className={styles.grid}>

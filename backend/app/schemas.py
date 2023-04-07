@@ -9,6 +9,7 @@ class UserBaseSchema(BaseModel):
     address: str
     city: str
     state: str
+    phone: str
     role: str | None = None
     created_at: int | None = None
     updated_at: int | None = None
