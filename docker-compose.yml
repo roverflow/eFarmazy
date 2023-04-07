@@ -12,7 +12,7 @@ services:
     depends_on:
       - db
     env_file:
-      - ./backend/server/.env
+      - ./backend/.env
   db:
     image: mongo:latest
     container_name: mongoefarm
@@ -24,13 +24,13 @@ services:
       - "27017:27017"
     volumes:
       - ./db:/data/db
-  frontend:
-    build:
-      context: ./frontend
-      dockerfile: Dockerfile
-    ports:
-      - "3000:3000"
-    volumes:
-      - ./frontend:/app
-    depends_on:
-      - backend
+  # frontend:
+  #   build:
+  #     context: ./frontend
+  #     dockerfile: Dockerfile
+  #   ports:
+  #     - "3000:3000"
+  #   volumes:
+  #     - ./frontend:/app
+  #   depends_on:
+  #     - backend
