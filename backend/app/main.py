@@ -6,9 +6,7 @@ from app.routers import auth, user
 
 myapp = FastAPI()
 
-origins = [
-    settings.CLIENT_ORIGIN,
-]
+origins = ["*"]
 
 myapp.add_middleware(
     CORSMiddleware,

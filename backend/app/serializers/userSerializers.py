@@ -6,6 +6,7 @@ def userEntity(user) -> dict:
         "role": user["role"],
         "age": user["age"],
         "address": user["address"],
+        "phone": user["phone"],
         "city": user["city"],
         "state": user["state"],
         "verified": user["verified"],
@@ -23,6 +24,7 @@ def userResponseEntity(user) -> dict:
         "role": user["role"],
         "age": user["age"],
         "address": user["address"],
+        "phone": user["phone"],
         "city": user["city"],
         "state": user["state"],
         "created_at": user["created_at"],
@@ -37,6 +39,7 @@ def embeddedUserResponse(user) -> dict:
         "email": user["email"],
         "age": user["age"],
         "address": user["address"],
+        "phone": user["phone"],
         "city": user["city"],
         "state": user["state"],
     }

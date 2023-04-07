@@ -26,10 +26,13 @@ export default function SignIn() {
           sameSite: "strict",
         });
         Cookies.set("logged_in", "true", { sameSite: "strict" });
+        Cookies.set("user", res.data.user, { sameSite: "strict" });
+        console.log(res.data);
         router.push("/dashboard");
       })
       .catch((err) => {
         console.log(err);
+        console.log("error in logging in");
       });
   };
 
@@ -43,7 +46,7 @@ export default function SignIn() {
             </p>
             <div>
               <Link href="/about">
-                By <code className={styles.code}>Team AAMS</code>
+                By <code className={styles.code}>Team Threshold</code>
               </Link>
             </div>
           </div>
