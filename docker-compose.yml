@@ -27,6 +27,7 @@ services:
   #     - ./backend:/app
   #   depends_on:
   #     - db
+  #     - redis_c
   #   env_file:
   #     - ./backend/.env
   # frontend:

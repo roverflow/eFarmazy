@@ -6,6 +6,8 @@ import time
 connected = False
 while not connected:
     try:
+        time.sleep(5)
+        print("Trying to connect to MongoDB...")
         client = mongo_client.MongoClient(settings.DATABASE_URL)
         conn = client.server_info()
         connected = True
