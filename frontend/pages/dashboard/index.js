@@ -10,7 +10,7 @@ const inter = Inter({ subsets: ["latin"] });
 
 const dashboardRoutes = [
   {
-    path: "/dashboard/pickaclass",
+    path: "/dashboard/sell",
     name: "Sell",
     description: "Sell your stash.",
   },
@@ -45,9 +45,9 @@ const Dashboard = () => {
           </Link>
 
           <div className={styles.grid}>
-            {dashboardRoutes.map((route) => {
+            {dashboardRoutes.map((route, i) => {
               return (
-                <Link href={route.path} className={styles.card}>
+                <Link href={route.path} className={styles.card} key={i}>
                   <h2 className={inter.className}>{route.name}</h2>
                   <p className={inter.className}>{route.description}</p>
                 </Link>
