@@ -121,7 +121,6 @@ const ProfileCard = (props) => {
                     className="rounded-full h-6 shadow-md inline-block mr-2"
                   />
                   {user && user.email}
-                  <span className="text-gray-500 text-xs">42 min ago</span>
                 </span>
 
                 <span
