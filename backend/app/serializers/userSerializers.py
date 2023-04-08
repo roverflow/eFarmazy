@@ -47,7 +47,25 @@ def embeddedUserResponse(user) -> dict:
         "zip": user["zip"],
     }
 
+def entityConv(stash) -> dict:
+    return {
+        "ProductName" : stash["product_name"],
+        "Category" : stash["category"],
+        "Score": stash["score"]
+    }
+
+def fruit(banana) -> dict:
+    return {
+        "Location" : banana['location'],
+        "Price" : banana['price'],
+        'User' : banana['user_id']
+    }
+
+def CovEntity(sta) -> dict:
+    return [entityConv(lis) for lis in sta]
 
 def userListEntity(users) -> list:
     return [userEntity(user) for user in users]
 
+def listFruit(fru) -> dict:
+    return [fruit(anx) for anx in fru]

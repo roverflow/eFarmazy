@@ -6,10 +6,17 @@ import logging
 model = load_model('model/model.h5')
 
 label_map = {
-    1:'banana',
-    0:'orange',
-    2:'potato',
-    3:'tomato'
+    'Banana':1,
+    'Orange':0,
+    'Potato':2,
+    'Tomato':3
+}
+
+price_map = {
+    'Banana':[6,18],
+    'Orange':[70,80],
+    'Potato':[8,11],
+    'Tomato':[7,8]
 }
 
 def load_image_from_file(file_path):
@@ -24,15 +31,18 @@ def load_image_from_file(file_path):
     x = x / 255.0
     return x, img
 
-def predict(file_path):
+def predict(file_path, label="Orange"):
     x,img = load_image_from_file(file_path)
-    logging.info("Predicting...")
     preds = model.predict(x)
-    logging.info("dONE")
     pred_index = np.argmax(preds)
-    score = preds[0][pred_index]
-    label = label_map[pred_index]
-    return label, float(score)
+    
+    index = label_map[label]
+    price = price_map[label]
+    print(preds[0][index] )
+    score = preds[0][index] * price[1]
+    if score < price[0]:
+      score = price[0]
+    return label, score
 
 if __name__ == "__main__":
     label, score = predict('/home/roverflow/dataPath/642fdcfe5d67df166504d495/1909664595.jpg')
