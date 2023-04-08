@@ -15,12 +15,12 @@ const dashboardRoutes = [
     description: "Sell your stash.",
   },
   {
-    path: "/dashboard/availability",
+    path: "/dashboard/view",
     name: "View",
     description: "View your previous reports.",
   },
   {
-    path: "/dashboard/report",
+    path: "/dashboard/market",
     name: "Market",
     description: "View the Market.",
   },

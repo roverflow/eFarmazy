@@ -1,12 +1,13 @@
 from fastapi import APIRouter, Depends, Request, UploadFile, File
 from bson.objectid import ObjectId
-from app.serializers.userSerializers import userResponseEntity
+from app.serializers.userSerializers import userResponseEntity, CovEntity, listFruit
 import requests
-from app.database import User
+from app.database import User, db
 from .. import schemas, oauth2
 from celery import Celery
 from pathlib import Path
 import uuid
+
 
 router = APIRouter()
 celery = Celery(__name__, broker='redis://localhost:6379/', backend='mongodb://newuser:password123@localhost:27017/')
@@ -33,6 +34,47 @@ async def sms_reply(request: Request):
     else:
         message = "No image found."
     return str(message)
+
+@router.get('/getStash')
+def get_me(user_id: str):
+    user = User.find_one({'_id': ObjectId(str(user_id))})
+    resp = CovEntity(user['stashes'])
+    return {"status": "success", "user": resp}
+
+@router.get("/banana")
+async def banana():
+    call = db['banana'].find({})
+    resp = listFruit(call)
+    return {
+        "status" : "scuss",
+        "data" : resp
+    }
+
+@router.get("/tomato")
+async def tomato():
+    call = db['tomato'].find({})
+    resp = listFruit(call)
+    return {
+        "status" : "scuss",
+        "data" : resp
+    }
+
+@router.get("/potato")
+async def potato():
+    call = db['potato'].find({})
+    resp = listFruit(call)
+    return {
+        "status" : "scuss",
+        "data" : resp
+    }
+@router.get("/orange")
+async def orange():
+    call = db['orange'].find({})
+    resp = listFruit(call)
+    return {
+        "status" : "scuss",
+        "data" : resp
+    }
 
 @router.post("/register_stash")
 async def register_stash(yexpected_price: int,yproduct_name: str, 

@@ -11,6 +11,10 @@ app = Celery('cworker',broker='redis://localhost:6379/', backend='mongodb://newu
 client = mongo_client.MongoClient('mongodb://newuser:password123@localhost:27017/')
 db = client['testx']
 User = db.users
+banana = db.banana
+orange = db.orange
+tomato = db.tomatp
+potato = db.potato
 
 @app.task(name='health_check')
 def health_check():
@@ -30,11 +34,26 @@ def register_stash(yexpected_price: int,yproduct_name: str, yproduct_image: str,
                 "user_id": user_id
             }
             logging.info(f'stash dict done')
-            label , score = predict(yproduct_image)
+            label , score = predict(yproduct_image, category)
             stash['label'] = label
             stash['score'] = score
             logging.info(f'prediction done')
             User.update_one({'_id': ObjectId(str(user_id))}, {'$push': {'stashes': stash}})
+
+            doc = {
+                "location" : user["address"],
+                "user_id" : user_id,
+                "price" : score
+            }
+
+            if label == 'Banana':
+                banana.insert_one(doc)
+            elif label == 'Potato':
+                potato.insert_one(doc)
+            elif label == 'Tomato':
+                tomato.insert_one(doc)
+            else:
+                orange.insert_one(doc)
 
             return "Stash registered successfully"
         else:
