@@ -8,7 +8,7 @@ const Header = (props) => {
       <p>{props.children}</p>
       <div className={props.hide ? styles.hide : ""}>
         <Link href="/about">
-          By <code className={styles.code}>Team AAMS</code>
+          By <code className={styles.code}>Team Threshold</code>
         </Link>
       </div>
     </div>

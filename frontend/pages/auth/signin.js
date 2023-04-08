@@ -7,6 +7,7 @@ import axios from "axios";
 import AuthLayout from "@/Layout/AuthLayout";
 import Cookies from "js-cookie";
 import { useRouter } from "next/router";
+import { ToastContainer, toast } from "react-toastify";
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -26,10 +27,13 @@ export default function SignIn() {
           sameSite: "strict",
         });
         Cookies.set("logged_in", "true", { sameSite: "strict" });
+        Cookies.set("user", res.data.user, { sameSite: "strict" });
         router.push("/dashboard");
       })
       .catch((err) => {
         console.log(err);
+        toast.error("Invalid Credentials");
+        console.log("error in logging in");
       });
   };
 
@@ -43,7 +47,7 @@ export default function SignIn() {
             </p>
             <div>
               <Link href="/about">
-                By <code className={styles.code}>Team AAMS</code>
+                By <code className={styles.code}>Team Threshold</code>
               </Link>
             </div>
           </div>

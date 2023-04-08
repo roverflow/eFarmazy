@@ -21,7 +21,7 @@ export default function Home() {
   return (
     <>
       <Head>
-        <title>AAMS</title>
+        <title>eFarmzy</title>
         <meta
           name="description"
           content="Automatic Attendence Management System"

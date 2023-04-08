@@ -30,3 +30,4 @@ yarn-error.log*
 
 # vercel
 .vercel
+model.h5

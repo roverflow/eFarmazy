@@ -27,11 +27,8 @@ const AuthLayout = (props) => {
     <>
       {" "}
       <Head>
-        <title>AAMS | Auth</title>
-        <meta
-          name="description"
-          content="Automatic Attendence Management System"
-        />
+        <title>eFarmzy | Auth</title>
+        <meta name="description" content="eFarmzy" />
         <meta name="viewport" content="width=device-width, initial-scale=1" />
         <link rel="icon" href="/favicon.ico" />
       </Head>

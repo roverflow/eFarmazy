@@ -32,9 +32,8 @@ export default function About() {
 
         <Link href={`/`} className={styles.center}>
           <Image
-            src={require("/assets/aams.png")}
+            src={require("/assets/efarm.svg")}
             alt="Next.js Logo"
-            style={{ width: "100%", height: "100%" }}
             priority
           />
         </Link>
@@ -86,10 +85,10 @@ export default function About() {
             rel="noopener noreferrer"
           >
             <h2 className={inter.className}>
-              Sarvajith
+              Krishna Koustub
               {/* <span>-&gt;</span> */}
             </h2>
-            <p className={inter.className}>1JT19CS081</p>
+            <p className={inter.className}>Unknown</p>
           </a>
         </div>
       </main>

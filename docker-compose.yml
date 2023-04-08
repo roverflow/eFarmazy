@@ -1,18 +1,6 @@
-version: "3.7"
+version: "3.8"
 
 services:
-  backend:
-    build:
-      context: ./backend
-      dockerfile: Dockerfile
-    ports:
-      - "8000:8000"
-    volumes:
-      - ./backend:/app
-    depends_on:
-      - db
-    env_file:
-      - ./backend/.env
   db:
     image: mongo:latest
     container_name: mongoefarm
@@ -24,6 +12,24 @@ services:
       - "27017:27017"
     volumes:
       - ./db:/data/db
+  redis_c:
+    container_name: redis
+    image: redis:6.2-alpine
+    ports:
+      - "127.0.0.1:6379:6379"
+  # backend:
+  #   build:
+  #     context: ./backend
+  #     dockerfile: Dockerfile
+  #   ports:
+  #     - "8000:8000"
+  #   volumes:
+  #     - ./backend:/app
+  #   depends_on:
+  #     - db
+  #     - redis_c
+  #   env_file:
+  #     - ./backend/.env
   # frontend:
   #   build:
   #     context: ./frontend

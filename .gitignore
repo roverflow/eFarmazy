@@ -107,3 +107,6 @@ venv/
 __init__.py
 __pycache__
 db/
+hack
+
+model.h5
