@@ -11,7 +11,7 @@ const ViewPage = () => {
   useEffect(() => {
     const fetchx = async () => {
       await axios
-        .get("http://localhost:8000/api/users/getStash", {
+        .get(`http://16.171.32.81:8000/api/users/getStash`, {
           params: {
             user_id: Cookies.get("user"),
           },
@@ -35,20 +35,12 @@ const ViewPage = () => {
             View your previous&nbsp;
             <code className={styles.code}>stash</code>
           </Header>
-          <table
-            style={{
-              maxWidth: "1100px",
-              width: "100%",
-              border: "1px solid black",
-              marginTop: "4rem",
-            }}
-            className="bg-white text-black text-center  text-sm font-light"
-          >
-            <thead class="border-b font-medium dark:border-neutral-500">
+          <table class="w-full max-w-1100 border border-gray-200 mt-16 bg-gray-800 text-white text-sm font-light">
+            <thead class="bg-gray-700 border-b border-gray-600 font-medium">
               <tr>
-                <th>Product Name</th>
-                <th>Category</th>
-                <th>Price</th>
+                <th class="px-6 py-4 text-left">Product Name</th>
+                <th class="px-6 py-4 text-left">Category</th>
+                <th class="px-6 py-4 text-right">Price</th>
               </tr>
             </thead>
             <tbody>
@@ -56,12 +48,15 @@ const ViewPage = () => {
                 stash.map((data, i) => (
                   <tr
                     key={i}
-                    style={{ border: "1px solid black" }}
-                    class="px-6 py-4"
+                    class="border-b border-gray-600 hover:bg-gray-700"
                   >
-                    <td>{data.ProductName}</td>
-                    <td>{data.Category}</td>
-                    <td>{data.Score}</td>
+                    <td class="px-6 py-4 whitespace-nowrap">
+                      {data.ProductName}
+                    </td>
+                    <td class="px-6 py-4">{data.Category}</td>
+                    <td class="px-6 py-4 text-right">
+                      Rs. {data.Score.toFixed(2)}
+                    </td>
                   </tr>
                 ))}
             </tbody>

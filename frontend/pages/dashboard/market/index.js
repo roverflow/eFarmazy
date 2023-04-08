@@ -20,7 +20,7 @@ const MarketPage = () => {
   useEffect(() => {
     const fetchData = async () => {
       await axios
-        .get(`http://localhost:8000/api/users/${drop.api}`)
+        .get(`http://16.171.32.81:8000/api/users/${drop.api}`)
         .then((res) => {
           setData(res.data.data);
         })
@@ -34,7 +34,7 @@ const MarketPage = () => {
   useEffect(() => {
     const fetchData = async () => {
       await axios
-        .get(`http://localhost:8000/api/users/${drop.api}`)
+        .get(`http://16.171.32.81:8000/api/users/${drop.api}`)
         .then((res) => {
           setData(res.data.data);
         })
@@ -50,8 +50,8 @@ const MarketPage = () => {
       <DashboardLayout>
         <main className={styles.dashMain_jc}>
           <Header hide={true}>
-            View your previous&nbsp;
-            <code className={styles.code}>stash</code>
+            Buy Fresh&nbsp;
+            <code className={styles.code}>Vegetables & Fruits</code>
           </Header>
           <div style={{ marginTop: "2rem" }}>
             <div className="mt-2 w-full">
@@ -76,20 +76,13 @@ const MarketPage = () => {
                 </Listbox.Options>
               </Listbox>
             </div>
-            <table
-              style={{
-                maxWidth: "1100px",
-                width: "100%",
-                border: "1px solid black",
-                marginTop: "4rem",
-              }}
-              className="bg-white text-black text-center  text-sm font-light"
-            >
-              <thead class="border-b font-medium dark:border-neutral-500">
+            <table class="w-full max-w-1100 border border-gray-700 mt-4 bg-gray-900 text-gray-100 text-sm font-light">
+              <thead class="bg-gray-800 border-b border-gray-700 font-medium">
                 <tr>
-                  <th>Product</th>
-                  <th>user</th>
-                  <th>Price</th>
+                  <th class="px-6 py-4 text-left">Product</th>
+                  <th class="px-6 py-4 text-left">User</th>
+                  <th class="px-6 py-4 text-right">Price</th>
+                  <th class="px-6 py-4 text-center">Availability</th>
                 </tr>
               </thead>
               <tbody>
@@ -98,12 +91,23 @@ const MarketPage = () => {
                     return (
                       <tr
                         key={i}
-                        style={{ border: "1px solid black" }}
-                        class="px-6 py-4"
+                        class="border-b border-gray-700 hover:bg-gray-800"
                       >
-                        <td className="p-2">{a.Location}</td>
-                        <td className="p-2">{a.User}</td>
-                        <td className="p-2">{a.Price.toFixed(2)} Rs</td>
+                        <td class="px-6 py-2 whitespace-nowrap">
+                          {a.Location}
+                        </td>
+                        <td class="px-6 py-2 whitespace-nowrap">{a.User}</td>
+                        <td class="px-6 py-2 text-right whitespace-nowrap">
+                          {a.Price.toFixed(2)} Rs
+                        </td>
+                        <td class="px-6 py-2">
+                          <a
+                            class="inline-block px-4 py-2 text-white bg-blue-500 rounded-full shadow-md hover:bg-blue-600 transition duration-200"
+                            href="#"
+                          >
+                            Buy Now
+                          </a>
+                        </td>
                       </tr>
                     );
                   })}

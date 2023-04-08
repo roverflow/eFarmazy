@@ -62,7 +62,7 @@ export default function SignUp() {
     };
 
     await axios
-      .post("http://localhost:8000/api/auth/register", data)
+      .post("http://16.171.32.81:8000/api/auth/register", data)
       .then((res) => {
         toast.success("Account created successfully");
         setTimeout(() => {

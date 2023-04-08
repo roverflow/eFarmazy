@@ -41,8 +41,8 @@ def predict(file_path, label="Orange"):
     print(preds[0][index] )
     score = preds[0][index] * price[1]
     if score < price[0]:
-      score = price[0]
-    return label, score
+      score = price[0] + (score*(25/100))
+    return label, score 
 
 if __name__ == "__main__":
     label, score = predict('/home/roverflow/dataPath/642fdcfe5d67df166504d495/1909664595.jpg')

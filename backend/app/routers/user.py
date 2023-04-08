@@ -52,7 +52,7 @@ async def banana():
 
 @router.get("/tomato")
 async def tomato():
-    call = db['tomato'].find({})
+    call = db['tomatp'].find({})
     resp = listFruit(call)
     return {
         "status" : "scuss",

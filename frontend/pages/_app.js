@@ -2,6 +2,7 @@ import "@/styles/globals.css";
 import Script from "next/script";
 import Head from "next/head";
 import "react-toastify/dist/ReactToastify.css";
+import axios from "axios";
 
 export default function App({ Component, pageProps }) {
   return (

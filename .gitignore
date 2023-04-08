@@ -111,3 +111,6 @@ hack
 
 model.h5
 
+
+# Local Netlify folder
+.netlify

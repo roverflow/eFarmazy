@@ -18,7 +18,7 @@ export default function SignIn() {
 
   const handleSubmit = () => {
     axios
-      .post("http://localhost:8000/api/auth/login", { email, password })
+      .post("http://16.171.32.81:8000/api/auth/login", { email, password })
       .then((res) => {
         Cookies.set("access_token", res.data.access_token, {
           sameSite: "strict",

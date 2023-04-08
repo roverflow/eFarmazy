@@ -17,7 +17,7 @@ const dashboardRoutes = [
   {
     path: "/dashboard/view",
     name: "View",
-    description: "View your previous reports.",
+    description: "Buy Vegetables and Fruits.",
   },
   {
     path: "/dashboard/market",
@@ -41,7 +41,7 @@ const Dashboard = () => {
             <code className={styles.code}>Your Option</code>
           </Header>
           <Link href={`/`} className={styles.center}>
-            <Image src={require("/assets/efarm.svg")} alt="aamsLogo" priority />
+            <Image src={require("/assets/efarm.png")} alt="aamsLogo" priority />
           </Link>
 
           <div className={styles.grid}>

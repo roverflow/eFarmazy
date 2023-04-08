@@ -17,7 +17,7 @@ const Profile = (props) => {
     Cookies.remove("logged_in");
     Cookies.remove("user");
     const response = await axios
-      .get("http://localhost:8000/api/auth/logout")
+      .get("http://16.171.32.81:8000/api/auth/logout")
       .then((res) => {
         console.log(res.data);
       })
@@ -49,7 +49,7 @@ const ProfileCard = (props) => {
   useEffect(() => {
     const fetchUser = async () => {
       await axios
-        .get("http://localhost:8000/api/users/me", {
+        .get("http://16.171.32.81:8000/api/users/me", {
           params: {
             user_id: `${Cookies.get("user")}`,
           },

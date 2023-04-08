@@ -32,7 +32,7 @@ const SellPage = () => {
     const formData = new FormData();
     formData.append("yproduct_image", image);
     await axios
-      .post("http://localhost:8000/api/users/register_stash", formData, {
+      .post("http://16.171.32.81:8000/api/users/register_stash", formData, {
         params: {
           yexpected_price: expPrice,
           yproduct_name: product,
@@ -56,17 +56,17 @@ const SellPage = () => {
         <ToastContainer />
         <main className={styles.dashMain_jc}>
           <Header hide={true}>
-            Register your&nbsp;
-            <code className={styles.code}>stash</code>
+            Display your&nbsp;
+            <code className={styles.code}>Grow</code>
           </Header>
-          <div className="mt-4" style={{ maxWidth: "1100px", width: "100%" }}>
-            <div className="w-full mt-6 p-10 bg-white rounded shadow-xl">
+          <div className="mt-4" style={{ maxWidth: "800px", width: "100%" }}>
+            <div className="w-full mt-6 p-10 bg-gray-800 rounded shadow-xl">
               <div className="mt-2">
-                <label className="block text-sm text-gray-600">
+                <label className="block text-sm text-gray-400">
                   Product Name
                 </label>
                 <input
-                  className="w-full px-5 py-2 text-gray-700 bg-gray-200 rounded"
+                  className="w-full px-5 py-2 text-gray-200 bg-gray-700 rounded"
                   type="text"
                   onChange={(e) => setProduct(e.target.value)}
                   required={true}
@@ -75,10 +75,10 @@ const SellPage = () => {
                 />
               </div>
               <div className="mt-2">
-                <label className="block text-sm text-gray-600">Category</label>
+                <label className="block text-sm text-gray-400">Category</label>
                 <Listbox value={selectedStash} onChange={setSelectedStash}>
                   <Listbox.Button
-                    className="text-black w-100 bg-gray-200 py-2 text-left px-5 rounded"
+                    className="text-gray-200 w-100 bg-gray-700 py-2 text-left px-5 rounded"
                     style={{ width: "100%" }}
                   >
                     {selectedStash.name}
@@ -89,7 +89,7 @@ const SellPage = () => {
                         key={person.id}
                         value={person}
                         disabled={person.unavailable}
-                        className="text-black bg-gray-400 py-2 px-5 cursor-pointer hover:bg-gray-500"
+                        className="text-gray-200 bg-gray-600 py-2 px-5 cursor-pointer hover:bg-gray-500"
                       >
                         {person.name}
                       </Listbox.Option>
@@ -98,30 +98,30 @@ const SellPage = () => {
                 </Listbox>
               </div>
               <div className="mt-2">
-                <label className="block text-sm text-gray-600">
+                <label className="block text-sm text-gray-400">
                   Upload Stash Image
                 </label>
                 <input
-                  className="relative m-0 block w-full min-w-0 flex-auto rounded border border-solid border-neutral-300 bg-clip-padding px-3 py-[0.32rem] text-base font-normal text-neutral-700 transition duration-300 ease-in-out file:-mx-3 file:-my-[0.32rem] file:overflow-hidden file:rounded-none file:border-0 file:border-solid file:border-inherit file:bg-neutral-100 file:px-3 file:py-[0.32rem] file:text-neutral-700 file:transition file:duration-150 file:ease-in-out file:[border-inline-end-width:1px] file:[margin-inline-end:0.75rem] hover:file:bg-neutral-200 focus:border-primary focus:text-neutral-700 focus:shadow-[0_0_0_1px] focus:shadow-primary focus:outline-none dark:border-neutral-600 dark:text-neutral-200 dark:file:bg-neutral-700 dark:file:text-neutral-100"
+                  className="relative m-0 block w-full min-w-0 flex-auto rounded border border-solid border-gray-600 bg-clip-padding px-3 py-[0.32rem] text-base font-normal text-gray-200 transition duration-300 ease-in-out file:-mx-3 file:-my-[0.32rem] file:overflow-hidden file:rounded-none file:border-0 file:border-solid file:border-inherit file:bg-gray-700 file:px-3 file:py-[0.32rem] file:text-gray-200 file:transition file:duration-150 file:ease-in-out file:[border-inline-end-width:1px] file:[margin-inline-end:0.75rem] hover:file:bg-gray-600 focus:border-purple-400 focus:text-gray-200 focus:shadow-[0_0_0_1px] focus:shadow-purple-400 focus:outline-none"
                   type="file"
                   onChange={handleImageUpload}
                 />
               </div>
               <div className="mt-2">
-                <label className=" block text-sm text-gray-600">
+                <label className="block text-sm text-gray-400">
                   Tell us your expected price
                 </label>
                 <input
-                  className="w-full px-2 py-2 text-gray-700 bg-gray-200 rounded"
+                  className="w-full px-2 py-2 text-gray-200 bg-gray-700 rounded"
                   type="text"
                   onChange={(e) => setExpPrice(e.target.value)}
                   required={true}
-                  placeholder="$"
+                  placeholder="Price"
                 />
               </div>
               <div className="mt-4 flex justify-between w-full">
                 <button
-                  className="px-4 py-1 text-white  tracking-wider bg-gray-900 rounded"
+                  className="px-4 py-1 text-white tracking-wider bg-gray-900 rounded"
                   onClick={handleSubmit}
                 >
                   Submit
